@@ -1,65 +1,66 @@
 <template>
-  <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        healog
-      </h1>
-      <h2 class="subtitle">
-        Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
-    </div>
-  </section>
+  <div class="contents">
+    <section class="tabWrapper">
+      <el-row>
+        <el-button type="default" icon="el-icon-edit"></el-button>
+        <el-button type="default" >Graph</el-button>
+      </el-row>
+    </section>
+    <section class="recorderWrapper">
+      <el-row >
+        <el-col >
+          <recorder />
+        </el-col>
+        <el-col >
+          <el-button type="success">Save</el-button>
+        </el-col>
+      </el-row>
+    </section>
+    <section class="logWrapper">
+      <el-row >
+        <el-col >
+          <log-bar />
+          <log-bar />
+          <log-bar />
+        </el-col>
+      </el-row>
+    </section>
+  </div>
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
+import Recorder from '~/components/Recorder.vue'
+import LogBar from '~/components/LogBar.vue'
 
 export default {
   components: {
-    AppLogo
+    Recorder,
+    LogBar
   }
 }
 </script>
 
-<style>
-.container {
-  min-height: 100vh;
+<style scoped>
+.tabWrapper {
+  margin-top: 25vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.recorderWrapper {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.logWrapper {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: top;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>
 
