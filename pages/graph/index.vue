@@ -1,19 +1,19 @@
 <template>
   <div class="contents">
     <buttons />
-    <recorder />
   </div>
 </template>
 
 <script>
 import Buttons from '~/components/Buttons.vue'
-import Recorder from '~/components/Recorder.vue'
 
 export default {
   components: {
-    Recorder,
     Buttons
   }
 }
 </script>
+
+<style scoped>
+</style>
 
