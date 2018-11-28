@@ -3,12 +3,13 @@
     <el-row >
       <el-col >
         <div class="recorder">
-          <label>{{date}}</label>
-          <el-input-number v-model="recorder" :precision="2" :step="0.1" :max="200"  ></el-input-number>
+          <label>{{recorder.date}}</label>
+          <el-input-number v-model="recorder.num" :precision="2" :step="0.1" :max="200"  ></el-input-number>
+          <el-input class="comment" placeholder="comment" v-model="recorder.comment" ></el-input>
         </div>
       </el-col>
       <el-col >
-        <el-button type="success">Save</el-button>
+        <el-button @click="() => this.save(recorder)" type="success">Save</el-button>
       </el-col>
     </el-row>
   </section>
@@ -19,12 +20,22 @@ import moment from 'moment'
 
 export default {
   props: {
-    choiceData: Object
+    targetLog: Object,
+    save: Function
+  },
+  mounted () {
+    if (this.targetLog) {
+      this.recorder = Object.assign({},this.targetLog)
+    }
   },
   data() {
     return {
-      recorder: 0,
-      date: moment().format('YYYY-MM-DD hh:mm:ss')
+      recorder: {
+        id: null,
+        num: 0.00,
+        comment: "",
+        date: moment().format('YYYY-MM-DD hh:mm:ss')
+      },
     }
   }
 }
@@ -41,10 +52,15 @@ export default {
 label {
   display: block;
   color:#888;
-  font-size:1.5em;
+  font-size:1.0em;
   margin-bottom:10px;
 }
 .recorder {
   margin-bottom:20px;
+}
+
+.comment {
+  margin-top: 20px;
+  width: 80vw;
 }
 </style>

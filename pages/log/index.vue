@@ -3,10 +3,8 @@
     <buttons />
     <section class="logWrapper">
       <el-row >
-        <el-col >
-          <log-bar />
-          <log-bar />
-          <log-bar />
+        <el-col>
+          <log-bar v-for="log in logs" :key="log.id" :log=log />
         </el-col>
       </el-row>
     </section>
@@ -21,6 +19,9 @@ export default {
   components: {
     Buttons,
     LogBar
+  },
+  computed: {
+    logs () { return this.$store.state.logs }
   }
 }
 </script>

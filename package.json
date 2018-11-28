@@ -15,7 +15,8 @@
   "dependencies": {
     "element-ui": "^2.4.11",
     "moment": "^2.22.2",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

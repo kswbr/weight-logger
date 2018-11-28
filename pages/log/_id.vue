@@ -1,7 +1,7 @@
 <template>
   <div class="contents">
     <buttons />
-    <recorder :save=this.save />
+    <recorder :save=this.save :targetLog=log />
   </div>
 </template>
 
@@ -17,13 +17,20 @@ export default {
   mounted() {
     this.$store.commit("fetch")
   },
+  computed: {
+    log () {
+      const id = this.$route.params.id
+      return this.$store.state.logs.find((log) => {
+        return log.id === id
+      })
+    }
+  },
   methods: {
     save (log) {
       if (log.num != 0) {
-        this.$store.commit("add", log)
+        this.$store.commit("update", log)
       }
     }
   }
 }
 </script>
-
