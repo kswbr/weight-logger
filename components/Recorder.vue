@@ -3,7 +3,7 @@
     <el-row >
       <el-col >
         <label>{{recorder.date}}</label>
-        <el-input-number class="recorder" :value="recorder.num" @focus="focusNumber" @input="inputNumber" :precision="2" :step="0.1" :max="200"  ></el-input-number>
+        <el-input class="recorder" type="number" :value="recorder.num" @focus="focusNumber" @input="inputNumber" :precision="2" :step="0.1" :max="200"  ></el-input>
       </el-col>
       <el-col >
         <el-input class="comment" placeholder="comment" v-model="recorder.comment" ></el-input>
@@ -66,10 +66,12 @@ label {
   margin-bottom:10px;
 }
 .recorder {
+  width: 80vw;
   margin-bottom:20px;
 }
 
 .comment {
-  margin-bottom: 20px;
+  width: 80vw;
+  margin-bottom:20px;
 }
 </style>

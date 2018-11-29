@@ -10,7 +10,7 @@
 
 <style scoped>
 .tabWrapper {
-  margin-top: 25vh;
+  margin-top: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;

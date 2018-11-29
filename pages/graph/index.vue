@@ -2,7 +2,7 @@
   <div class="contents">
     <buttons />
     <div class="graphWrapper">
-      <line-chart :chart-data="datacollection"></line-chart>
+      <line-chart class="graph" :chart-data="datacollection"></line-chart>
     </div>
   </div>
 </template>
@@ -47,20 +47,18 @@
             }
           ]
         }
-      },
-      getRandomInt () {
-        return Math.floor(Math.random() * (50 - 5 + 1)) + 5
       }
     }
   }
 </script>
 
-<style>
+<style scoped>
   .graphWrapper {
     margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: top;
+    zoom:0.92;
   }
 </style>
 
