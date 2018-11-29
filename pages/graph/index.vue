@@ -1,46 +1,66 @@
+<template>
   <div class="contents">
-    <el-slider v-model="data1" :min="0" :max="100" />
-    <el-slider v-model="data2" :min="0" :max="100" />
+    <buttons />
+    <div class="graphWrapper">
+      <line-chart :chart-data="datacollection"></line-chart>
+    </div>
   </div>
 </template>
 
 <script>
-import VueCharts from 'vue-chartjs'
-import {Line, mixins} from 'vue-chartjs'
-import Buttons from '~/components/Buttons.vue'
+  import Buttons from '~/components/Buttons.vue'
+  import LineChart from '~/components/LineChart.vue'
 
-export default {
-  components: {
-    Buttons
-  },
-  mixins: [Line, mixins.reactiveData],
-  data: function() {
-    return {
-      options: {
-        scales: {
-          yAxes: [
+  export default {
+    components: {
+      Buttons,
+      LineChart
+    },
+    data () {
+      return {
+        datacollection: null
+      }
+    },
+    created () {
+      this.$store.commit("fetch")
+    },
+    mounted () {
+      this.fillData()
+    },
+    methods: {
+      fillData () {
+        const logs = this.$store.state.logs
+        const labels = logs.map((log) => {
+          return log.date
+        }).reverse()
+        const data = logs.map((log) => {
+          return log.num
+        }).reverse()
+
+        this.datacollection = {
+          labels,
+          datasets: [
             {
-              ticks: {
-                min: 0,
-                max: 200,
-              }
-            },
+              label: 'weight',
+              backgroundColor: '#f87979',
+              data
+            }
           ]
-        },
+        }
       },
-    }
-  },
-  mounted: function() {
-    this.chartData = {
-      datasets: [
-        {
-          label: 'weight',
-          data: [100,200,100,120],
-        },
-      ],
+      getRandomInt () {
+        return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+      }
     }
   }
-}
 </script>
 
+<style>
+  .graphWrapper {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: top;
+  }
+</style>
 
