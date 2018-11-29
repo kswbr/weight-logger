@@ -20,6 +20,9 @@ export default {
     Buttons,
     LogBar
   },
+  created () {
+    this.$store.commit("fetch")
+  },
   computed: {
     logs () { return this.$store.state.logs }
   }

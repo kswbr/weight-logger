@@ -14,7 +14,7 @@ export default {
     Recorder,
     Buttons
   },
-  mounted() {
+  created () {
     this.$store.commit("fetch")
   },
   methods: {

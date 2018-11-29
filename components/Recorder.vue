@@ -2,11 +2,11 @@
   <section class="recorderWrapper">
     <el-row >
       <el-col >
-        <div class="recorder">
-          <label>{{recorder.date}}</label>
-          <el-input-number v-model="recorder.num" :precision="2" :step="0.1" :max="200"  ></el-input-number>
-          <el-input class="comment" placeholder="comment" v-model="recorder.comment" ></el-input>
-        </div>
+        <label>{{recorder.date}}</label>
+        <el-input-number class="recorder" :value="recorder.num" @focus="focusNumber" @input="inputNumber" :precision="2" :step="0.1" :max="200"  ></el-input-number>
+      </el-col>
+      <el-col >
+        <el-input class="comment" placeholder="comment" v-model="recorder.comment" ></el-input>
       </el-col>
       <el-col >
         <el-button @click="() => this.save(recorder)" type="success">Save</el-button>
@@ -26,6 +26,16 @@ export default {
   mounted () {
     if (this.targetLog) {
       this.recorder = Object.assign({},this.targetLog)
+    }
+  },
+  methods: {
+    inputNumber(e) {
+      this.recorder.num = parseFloat(e)
+    },
+    focusNumber(e) {
+      if (e.target.value == 0) {
+        e.target.value = ''
+      }
     }
   },
   data() {
@@ -60,7 +70,6 @@ label {
 }
 
 .comment {
-  margin-top: 20px;
-  width: 80vw;
+  margin-bottom: 20px;
 }
 </style>
