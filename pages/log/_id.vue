@@ -29,6 +29,7 @@ export default {
     save (log) {
       if (log.num != 0) {
         this.$store.commit("update", log)
+        this.$router.push('/graph')
       }
     }
   }

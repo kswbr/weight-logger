@@ -44,7 +44,7 @@ export default {
         id: null,
         num: 0.00,
         comment: "",
-        date: moment().format('YYYY-MM-DD hh:mm:ss')
+        date: moment().format('YYYY-MM-DD HH:mm:ss')
       },
     }
   }

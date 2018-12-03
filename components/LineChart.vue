@@ -5,7 +5,20 @@ const { reactiveProp } = mixins
 export default {
   extends: Line,
   mixins: [reactiveProp],
-  props: ['options'],
+  data () {
+    return{
+      options: {
+        scales:{
+          yAxes: [{
+            ticks: {
+              min: 60,
+              max: 90,
+            },
+          }],
+        }
+      },
+    }
+  },
   mounted () {
     this.renderChart(this.chartData, this.options)
   }
